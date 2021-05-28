@@ -1,0 +1,9 @@
+1. public Engine engine; - public заменить на private
+2. class Lorry extends Car, Moveable, Stopable - интерфейсы implements.
+3. Также над переопределенными методами стоит указать аннотацию @Override
+4. abstract void open(); - class Lorry должен реализовать метод open
+
+Предложения:
+
+При увеличении количества свойств объекта Car в дальнейшем можно перейти на паттерн "строитель"
+для облегчения настройки объекта;
