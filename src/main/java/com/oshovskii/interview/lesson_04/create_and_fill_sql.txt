@@ -1,0 +1,280 @@
+CREATE TABLE movies
+(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    title VARCHAR(256) NOT NULL,
+    duration TIME NOT NULL
+);
+
+CREATE TABLE seances (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    movie_id BIGINT NOT NULL,
+    begin_time TIME NOT NULL,
+    price NUMERIC(19,2) NOT NULL,
+    FOREIGN KEY (movie_id) REFERENCES movies (id)
+);
+
+CREATE TABLE tickets (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  seance_id bigint NOT NULL,
+  FOREIGN KEY (seance_id) REFERENCES seances (id)
+);
+
+-------------------------------------------------------------------
+
+
+insert into movies (title, duration) values ('Beethoven''s 3rd', '0:05:40');
+insert into movies (title, duration) values ('Five Star Final', '1:46:00');
+insert into movies (title, duration) values ('Artifact', '2:45:22');
+insert into movies (title, duration) values ('Unprecedented: The 2000 Presidential Election', '2:52:04');
+insert into movies (title, duration) values ('Last American Virgin, The', '0:20:57');
+insert into movies (title, duration) values ('Man on Wire', '1:22:38');
+insert into movies (title, duration) values ('Dr. Jekyll and Mr. Hyde', '1:23:24');
+insert into movies (title, duration) values ('Order, The', '0:18:27');
+insert into movies (title, duration) values ('Welcome to the Jungle', '1:11:30');
+insert into movies (title, duration) values ('Onechanbara - Zombie Bikini Squad (a.k.a. Oneechanbara: The Movie)', '1:01:23');
+insert into movies (title, duration) values ('Song of the South', '1:47:46');
+insert into movies (title, duration) values ('Sorry, Wrong Number', '0:38:48');
+insert into movies (title, duration) values ('South Park: Bigger, Longer and Uncut', '2:34:00');
+insert into movies (title, duration) values ('Sword of Doom, The (Dai-bosatsu tôge)', '2:58:33');
+insert into movies (title, duration) values ('Faust', '1:51:07');
+
+
+
+insert into seances (movie_id, begin_time, price) values (14, '7:38:41', '16');
+insert into seances (movie_id, begin_time, price) values (7, '2:39:46', '30');
+insert into seances (movie_id, begin_time, price) values (13, '8:16:03', '19');
+insert into seances (movie_id, begin_time, price) values (5, '12:41:46', '28');
+insert into seances (movie_id, begin_time, price) values (14, '16:38:23', '26');
+insert into seances (movie_id, begin_time, price) values (14, '10:04:16', '17');
+insert into seances (movie_id, begin_time, price) values (12, '6:32:39', '27');
+insert into seances (movie_id, begin_time, price) values (3, '1:23:52', '19');
+insert into seances (movie_id, begin_time, price) values (15, '11:17:33', '16');
+insert into seances (movie_id, begin_time, price) values (8, '23:11:52', '22');
+insert into seances (movie_id, begin_time, price) values (14, '12:42:44', '27');
+insert into seances (movie_id, begin_time, price) values (1, '18:57:32', '20');
+insert into seances (movie_id, begin_time, price) values (9, '3:35:01', '23');
+insert into seances (movie_id, begin_time, price) values (11, '6:31:22', '19');
+insert into seances (movie_id, begin_time, price) values (9, '16:04:17', '27');
+insert into seances (movie_id, begin_time, price) values (15, '11:10:51', '28');
+insert into seances (movie_id, begin_time, price) values (5, '15:33:10', '20');
+insert into seances (movie_id, begin_time, price) values (4, '20:18:09', '26');
+insert into seances (movie_id, begin_time, price) values (11, '16:15:26', '22');
+insert into seances (movie_id, begin_time, price) values (15, '8:16:49', '15');
+insert into seances (movie_id, begin_time, price) values (9, '13:52:38', '15');
+insert into seances (movie_id, begin_time, price) values (6, '9:14:16', '27');
+insert into seances (movie_id, begin_time, price) values (13, '5:38:26', '22');
+insert into seances (movie_id, begin_time, price) values (14, '21:47:40', '16');
+insert into seances (movie_id, begin_time, price) values (4, '5:39:18', '19');
+insert into seances (movie_id, begin_time, price) values (13, '1:42:39', '29');
+insert into seances (movie_id, begin_time, price) values (3, '5:20:27', '29');
+insert into seances (movie_id, begin_time, price) values (5, '20:36:44', '22');
+insert into seances (movie_id, begin_time, price) values (9, '15:56:39', '23');
+insert into seances (movie_id, begin_time, price) values (3, '23:21:06', '22');
+insert into seances (movie_id, begin_time, price) values (12, '5:06:39', '20');
+insert into seances (movie_id, begin_time, price) values (15, '7:24:07', '19');
+insert into seances (movie_id, begin_time, price) values (4, '7:35:43', '23');
+insert into seances (movie_id, begin_time, price) values (1, '12:10:21', '28');
+insert into seances (movie_id, begin_time, price) values (4, '18:56:37', '28');
+insert into seances (movie_id, begin_time, price) values (2, '21:53:14', '30');
+insert into seances (movie_id, begin_time, price) values (9, '6:41:47', '29');
+insert into seances (movie_id, begin_time, price) values (10, '15:04:26', '21');
+insert into seances (movie_id, begin_time, price) values (15, '6:02:34', '20');
+insert into seances (movie_id, begin_time, price) values (9, '11:15:16', '22');
+insert into seances (movie_id, begin_time, price) values (13, '20:18:31', '17');
+insert into seances (movie_id, begin_time, price) values (14, '10:40:16', '21');
+insert into seances (movie_id, begin_time, price) values (9, '3:41:51', '21');
+insert into seances (movie_id, begin_time, price) values (7, '2:54:58', '23');
+insert into seances (movie_id, begin_time, price) values (15, '2:00:41', '23');
+insert into seances (movie_id, begin_time, price) values (11, '19:53:09', '24');
+insert into seances (movie_id, begin_time, price) values (7, '7:16:55', '17');
+insert into seances (movie_id, begin_time, price) values (14, '4:50:55', '30');
+insert into seances (movie_id, begin_time, price) values (13, '15:26:29', '20');
+insert into seances (movie_id, begin_time, price) values (10, '18:26:53', '27');
+insert into seances (movie_id, begin_time, price) values (15, '23:41:52', '26');
+insert into seances (movie_id, begin_time, price) values (6, '13:20:00', '25');
+insert into seances (movie_id, begin_time, price) values (3, '6:11:39', '29');
+insert into seances (movie_id, begin_time, price) values (14, '16:42:22', '18');
+insert into seances (movie_id, begin_time, price) values (6, '19:10:03', '21');
+insert into seances (movie_id, begin_time, price) values (2, '22:23:58', '15');
+insert into seances (movie_id, begin_time, price) values (15, '6:24:11', '27');
+insert into seances (movie_id, begin_time, price) values (6, '23:33:51', '24');
+insert into seances (movie_id, begin_time, price) values (3, '18:58:33', '25');
+insert into seances (movie_id, begin_time, price) values (12, '10:05:48', '28');
+insert into seances (movie_id, begin_time, price) values (4, '17:29:34', '29');
+insert into seances (movie_id, begin_time, price) values (2, '14:44:16', '20');
+insert into seances (movie_id, begin_time, price) values (8, '22:58:31', '20');
+insert into seances (movie_id, begin_time, price) values (1, '0:59:56', '23');
+insert into seances (movie_id, begin_time, price) values (10, '5:10:37', '15');
+insert into seances (movie_id, begin_time, price) values (15, '23:38:38', '28');
+insert into seances (movie_id, begin_time, price) values (6, '4:54:08', '25');
+insert into seances (movie_id, begin_time, price) values (13, '0:15:18', '29');
+insert into seances (movie_id, begin_time, price) values (7, '13:33:52', '19');
+insert into seances (movie_id, begin_time, price) values (9, '17:51:11', '18');
+insert into seances (movie_id, begin_time, price) values (14, '21:54:47', '16');
+insert into seances (movie_id, begin_time, price) values (2, '15:55:49', '24');
+insert into seances (movie_id, begin_time, price) values (6, '22:31:39', '23');
+insert into seances (movie_id, begin_time, price) values (13, '16:37:38', '19');
+insert into seances (movie_id, begin_time, price) values (2, '6:24:10', '26');
+insert into seances (movie_id, begin_time, price) values (4, '23:07:32', '29');
+insert into seances (movie_id, begin_time, price) values (4, '9:57:03', '27');
+insert into seances (movie_id, begin_time, price) values (2, '10:58:58', '26');
+insert into seances (movie_id, begin_time, price) values (1, '16:53:09', '17');
+insert into seances (movie_id, begin_time, price) values (13, '11:16:40', '21');
+insert into seances (movie_id, begin_time, price) values (6, '10:18:32', '18');
+insert into seances (movie_id, begin_time, price) values (10, '4:37:49', '30');
+insert into seances (movie_id, begin_time, price) values (11, '15:37:34', '30');
+insert into seances (movie_id, begin_time, price) values (15, '6:57:50', '20');
+insert into seances (movie_id, begin_time, price) values (6, '2:49:16', '17');
+insert into seances (movie_id, begin_time, price) values (6, '6:57:08', '17');
+insert into seances (movie_id, begin_time, price) values (12, '10:59:07', '29');
+insert into seances (movie_id, begin_time, price) values (12, '14:54:02', '25');
+insert into seances (movie_id, begin_time, price) values (10, '16:19:16', '25');
+insert into seances (movie_id, begin_time, price) values (3, '22:22:26', '22');
+insert into seances (movie_id, begin_time, price) values (1, '14:59:35', '16');
+insert into seances (movie_id, begin_time, price) values (3, '13:36:58', '21');
+insert into seances (movie_id, begin_time, price) values (5, '1:31:49', '21');
+insert into seances (movie_id, begin_time, price) values (6, '15:01:34', '17');
+insert into seances (movie_id, begin_time, price) values (4, '5:28:07', '28');
+insert into seances (movie_id, begin_time, price) values (11, '13:45:32', '21');
+insert into seances (movie_id, begin_time, price) values (2, '13:33:12', '18');
+insert into seances (movie_id, begin_time, price) values (10, '10:10:55', '23');
+insert into seances (movie_id, begin_time, price) values (12, '18:33:48', '16');
+insert into seances (movie_id, begin_time, price) values (15, '21:29:24', '27');
+
+
+INSERT INTO tickets (seance_id) VALUES ('1');
+INSERT INTO tickets (seance_id) VALUES ('1');
+INSERT INTO tickets (seance_id) VALUES ('1');
+INSERT INTO tickets (seance_id) VALUES ('1');
+
+INSERT INTO tickets (seance_id) VALUES ('2');
+INSERT INTO tickets (seance_id) VALUES ('2');
+INSERT INTO tickets (seance_id) VALUES ('2');
+INSERT INTO tickets (seance_id) VALUES ('2');
+INSERT INTO tickets (seance_id) VALUES ('2');
+INSERT INTO tickets (seance_id) VALUES ('2');
+
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+INSERT INTO tickets (seance_id) VALUES ('3');
+
+
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+INSERT INTO tickets (seance_id) VALUES ('4');
+
+
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+INSERT INTO tickets (seance_id) VALUES ('5');
+
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
+INSERT INTO tickets (seance_id) VALUES ('6');
