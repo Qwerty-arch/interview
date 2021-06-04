@@ -1,0 +1,47 @@
+SELECT m.title, s.begin_time, m.duration,
+o.overlapse_title AS title, o.overlapse_begin_time AS begin_time, o.overlapse_duration AS duration
+FROM seances AS s JOIN movies AS m ON (s.movie_id = m.id),
+    (
+         SELECT s1.id AS overlapse_id, m1.title AS overlapse_title, s1.begin_time AS overlapse_begin_time, m1,duration AS overlapse_duration
+         FROM seances s1
+         JOIN movies m1 ON (s1.movie_id = m1.id)
+     ) AS o
+WHERE (s.begin_time + m.duration::INTERVAL ) > o.overlapse_begin_time AND s.id < o.overlapse_id
+ORDER BY (s.begin_time + m.duration::INTERVAL) - o.overlapse_begin_time, s.begin_time;
+
+--------------------------------------------------------------------------------------------------------
+
+SELECT m.title, s.begin_time, m.duration,
+	o.overlapse_title AS title, o.overlapse_begin_time AS begin_time, o.overlapse_duration AS duration,
+	(EXTRACT(epoch FROM(s.begin_time + m.duration::INTERVAL)/60) - EXTRACT(epoch FROM(o.overlapse_begin_time + o.overlapse_duration::INTERVAL)/60)) AS timeout
+FROM seances AS s JOIN movies AS m ON (s.movie_id = m.id),
+    (
+         SELECT s1.id AS overlapse_id, m1.title AS overlapse_title, s1.begin_time AS overlapse_begin_time, m1,duration AS overlapse_duration
+         FROM seances s1
+         JOIN movies m1 ON (s1.movie_id = m1.id)
+     ) AS o
+WHERE o.overlapse_id - s.id = 1
+AND (EXTRACT(epoch FROM(s.begin_time + m.duration::INTERVAL)/60) -
+	 EXTRACT(epoch FROM(o.overlapse_begin_time + o.overlapse_duration::INTERVAL)/60) >= 30)
+ORDER BY timeout;
+
+--------------------------------------------------------------------------------------------------------
+
+SELECT * FROM
+(
+	SELECT cast(m.id as Varchar), m.title, COUNT(*)/COUNT(DISTINCT t.seance_id) AS visiter_total, ROUND(AVG(t.id)) AS average, SUM(s.price) AS revenue
+	FROM movies m
+    JOIN seances s ON (s.movie_id = m.id)
+    JOIN tickets t ON (t.seance_id = s.id)
+	GROUP BY m.id
+	ORDER BY revenue DESC
+	) AS data_table
+UNION
+SELECT 'Total', '', COUNT(*) AS visiter_total, SUM(average) AS average, SUM(revenue) AS revenue FROM
+(
+    SELECT m.id, m.title, COUNT(*)/COUNT(DISTINCT(t.seance_id)) AS average, SUM(s.price) AS revenue
+    FROM movies m
+    JOIN seances s ON (s.movie_id = m.id)
+    JOIN tickets t ON (t.seance_id = s.id)
+    GROUP BY m.id
+    ) AS total_row;
